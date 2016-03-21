@@ -1,5 +1,3 @@
-# coding=utf-8
-
 #Character generator project
 #This chooses their background features, like religion and ancestry
 #Note that these are all based on Canadian Census statistics, extrapolated to 2030 by both Statistics Canada and personally by me!
@@ -36,7 +34,8 @@ def genAncestry():
 		#Only one background
 		x = random() * 100.0
 		num = 1.25103 + (0.810964 * x) - (0.0551849 * (x**2)) + (0.00173663 * (x**3)) - (0.0000219102 * (x**4)) + (9.5533 * (10**(-8)) * (x**5))
-		return lSingleBackground[int(max(0, min(len(lSingleBackground), round(num))))]
+		lReturn = [ lSingleBackground[max(0, min(len(lSingleBackground), round(num)))] ]
+		return lReturn
 	else:
 		#Multiple backgrounds
 		lBackgrounds = []
@@ -54,40 +53,5 @@ def genAncestry():
 					break
 		return lBackgrounds
 
-def readFromFileToDict(filename, dictionary):
-	f = open(filename, 'r')
-	for line in f:
-		sData = line.split(':')
-		dictionary[sData[0]] = float(sData[1])
-	f.close()
-
-dFemaleNames = {}
-dMaleNames = {}
-
-readFromFileToDict("Data/nameIndexBoys.txt", dMaleNames)
-readFromFileToDict("Data/nameIndexGirls.txt", dFemaleNames)
-
-def findNameByOdd(percentage, dictionary):
-	dNamesLowerThan = {}
-	for key in dictionary.keys():
-		if dictionary[key] < percentage:
-			dNamesLowerThan[key] = dictionary[key]
-
-	highestName = ""
-	highestVal = 0
-	for key in dNamesLowerThan.keys():
-		if dNamesLowerThan[key] > highestVal:
-			highestVal = dNamesLowerThan[key]
-			highestName = key
-
-	return highestName
-
-def genName(sex):
-	rand = random() * 100.000000 
-	if sex.lower()[0] is 'f':
-		return findNameByOdd(rand, dFemaleNames)
-	else:
-		return findNameByOdd(rand, dMaleNames)
-
-def gen(sex):
-	return { 'Name':genName(sex), 'Religion':genReligion(), 'Ancestry':genAncestry() }
+def gen():
+	return { 'Religion':genReligion(), 'Ancestry':list(genAncestry()) }

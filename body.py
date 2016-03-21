@@ -1,5 +1,3 @@
-# coding=utf-8
-
 #Character generator project
 #This chooses body features
 
@@ -57,7 +55,7 @@ def gen():
 			  'Height':0,
 		  	  'Weight':0 }
 	dBody['Sex'] = genSex()
-	dBody['Age'] = genAge(dBody['Sex'])
-	dBody['Height'] = genHeight(dBody['Sex'], dBody['Age'])
-	dBody['Weight'] = genWeight(dBody['Sex'], dBody['Age']) * 2.20462
+	dBody['Age'] = int(genAge(dBody['Sex']))
+	dBody['Height'] = int(genHeight(dBody['Sex'], dBody['Age']))
+	dBody['Weight'] = int(genWeight(dBody['Sex'], dBody['Age']) * 2.20462)
 	return dBody

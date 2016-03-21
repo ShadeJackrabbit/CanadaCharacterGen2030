@@ -7,18 +7,26 @@ vPersonality = personality.gen()
 lPersonalityDisorder = personality.genDisorder()
 dPersonalitySex = personality.genSex()
 
-print("Personality Type: ", vPersonality, "-", personality.desc(vPersonality))
-print("Personality Disorders: ", lPersonalityDisorder)
-print("Sexuality Dynamics: ", dPersonalitySex)
-
 import body
 
 vBody = body.gen()
 
-print(vBody)
-
 import background
 
-vBackground = background.gen(vBody['Sex'])
+vBackground = background.gen()
 
-print(vBackground)
+print("Age: ", vBody['Age'])
+print("Height: ", vBody['Height'], "cm", "\tWeight: ", vBody['Weight'], "lbs.")
+print("Religion: ", vBackground['Religion'])
+print("Ancestry: ")
+for ancestor in vBackground['Ancestry']:
+	print("\t", ancestor)
+
+print("\nSex: ", vBody['Sex'], "\tGender: ", dPersonalitySex['Gender'])
+print(dPersonalitySex['Sexuality'], "Polyamorous" if dPersonalitySex['Polyamorous'] else "")
+
+print("\nPersonality: ", ', '.join(vPersonality).capitalize())
+if len(lPersonalityDisorder) > 0:
+	print("\nPersonality disorders:")
+	for disorder in lPersonalityDisorder:
+		print("\t", disorder)
