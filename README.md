@@ -4,6 +4,8 @@ A character generator for making random humans in the year 2030 in British Colum
 
 Most of the data used has been compiled from various Statistics Canada site, including directly taken from their site. I have extrapolated a lot of data to future values, using programs such as Wolfram Mathematica, and libraries like SciPy.
 
+Run **generator.py**.
+
 ## Requirements
 - Python 3.5
 - NumPy 1.10.4
@@ -21,6 +23,8 @@ This is because in language, synonyms are never perfect matches. They have conno
 
 #### Current Issues
 The old data is... perhaps over two years old? And I have no clue what half of it means. I have a lot of lists of numbers and stuff and I'm not really sure how accurate all of it is any more. I feel like it could be a good idea to reparse numbers and restate their sources
+
+---
 
 ### v0.5.1
 - Update to the layout of the generated character sheet

@@ -1,17 +1,13 @@
 #Character generator project
 #Central generation file
 
-import personality
+from generation import *
 
 vPersonality = personality.gen()
 lPersonalityDisorder = personality.genDisorder()
 dPersonalitySex = personality.genSex()
 
-import body
-
 vBody = body.gen()
-
-import background
 
 vBackground = background.gen()
 
